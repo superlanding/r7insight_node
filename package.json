@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "babel-runtime": "6.6.1",
-    "codependency": "0.1.4",
     "json-stringify-safe": "5.0.1",
     "lodash": "4.17.15",
     "semver": "5.1.0",

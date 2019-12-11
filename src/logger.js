@@ -4,7 +4,6 @@ import net from 'net';
 import tls from 'tls';
 import urlUtil from 'url';
 import { Writable } from 'stream';
-import codependency from 'codependency';
 import reconnectCore from 'reconnect-core';
 import * as defaults from './defaults';
 import * as levelUtil from './levels';
@@ -72,7 +71,6 @@ const getSafeProp = (log, prop) => {
   return safeProp;
 };
 
-const requirePeer = codependency.register(module);
 
 
 /**
@@ -813,18 +811,6 @@ class Logger extends Writable {
     return { level, name, stream, type };
   }
 }
-
-// provision winston
-const winston = requirePeer('winston', { optional: true });
-
-if (winston) Logger.provisionWinston(winston);
-
-// Provision too the winston static versions for testing/development purposes
-const winston1 = requirePeer('winston1', { optional: true });
-const winston2 = requirePeer('winston2x', { optional: true });
-
-if (winston1) Logger.provisionWinston(winston1);
-if (winston2) Logger.provisionWinston(winston2);
 
 export {
     Logger as default,
